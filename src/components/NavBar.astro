@@ -1,0 +1,32 @@
+---
+import MenuLink from '@/components/MenuLink.astro'
+import { Icon } from 'astro-icon/components'
+import { SITE_NAV_LINKS, SITE_TITLE } from '@/consts'
+---
+
+<header>
+  <nav class="navbar bg-base-100 border-base-300 border-b text-xl shadow-sm">
+    <div class="flex-none">
+      <div class="dropdown">
+        <div class="btn btn-ghost sm:hidden" role="button" tabindex="0">
+          <Icon name="lucide:menu" size="20" />
+        </div>
+        <ul
+          class="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-56 p-2 shadow"
+          tabindex="-1">
+          {SITE_NAV_LINKS.map((link) => <MenuLink href={link.href}>{link.name}</MenuLink>)}
+        </ul>
+      </div>
+    </div>
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl" href="/">
+        {SITE_TITLE}
+      </a>
+    </div>
+    <div class="navbar-end hidden sm:flex">
+      <ul class="menu menu-horizontal">
+        {SITE_NAV_LINKS.map((link) => <MenuLink href={link.href}>{link.name}</MenuLink>)}
+      </ul>
+    </div>
+  </nav>
+</header>

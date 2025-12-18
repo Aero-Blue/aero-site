@@ -1,17 +1,21 @@
 ---
 import '@/styles/global.css'
 import BaseHead from '@/components/BaseHead.astro'
+import NavBar from '@/components/NavBar.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts'
+import Footer from '@/components/Footer.astro'
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead description={SITE_DESCRIPTION} title={SITE_TITLE} />
   </head>
-  <body>
-    <main class="container mx-auto h-screen grow">
+  <body class="flex min-h-screen min-w-56 flex-col">
+    <NavBar />
+    <main class="flex grow items-center justify-center">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
