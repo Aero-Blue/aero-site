@@ -11,7 +11,14 @@ export interface SocialLink {
   icon: string
 }
 
-export const SITE_TITLE = 'AeroBlue'
+export const HERO = {
+  title: "Hi, I'm Aero Blue.",
+  description:
+    'Just another developer who remakes an entire website just to have an excuse to use Astro.',
+  image: 'src/assets/logo-light-blue.png',
+}
+
+export const SITE_TITLE: string = 'AeroBlue'
 export const SITE_DESCRIPTION = 'Welcome to my website!'
 export const SITE_NAV_LINKS: NavLink[] = [
   { name: 'Blog', href: '/blog' },
