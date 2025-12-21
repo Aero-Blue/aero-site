@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import TableOfContents from '@/components/TableOfContents.astro'
+import PostContent from '@/components/PostContent.astro'
+import { type CollectionEntry } from 'astro:content'
+import PostHeader from '@/components/PostHeader.astro'
+export interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+const { Content, headings, remarkPluginFrontmatter } = await post.render()
+const { readingTime } = remarkPluginFrontmatter
+const { title, description } = post.data
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="container mx-auto max-w-3xl px-4 py-12">
+    <div>
+      <a
+        href="/blog"
+        class="text-base-content/60 hover:text-primary inline-flex items-center gap-2 text-sm">
+        ← Back to Blog
+      </a>
+    </div>
+    <PostHeader post={post} readingTime={readingTime} />
+    {headings.length > 0 && post.data.tableOfContents && <TableOfContents headings={headings} />}
+    <h1 class="toc"></h1>
+    <PostContent>
+      <Content />
+    </PostContent>
+    <!-- <div
+        class="prose prose-lg prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-code:text-primary prose-code:bg-base-200 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:bg-base-200 prose-img:rounded-lg prose-img:shadow-lg max-w-none">
+
+        <Content/>
+        </div> -->
+  </article>
+</BaseLayout>

@@ -19,7 +19,7 @@ export const HERO = {
 }
 
 export const SITE_TITLE: string = 'AeroBlue'
-export const SITE_DESCRIPTION = 'Welcome to my website!'
+export const SITE_DESCRIPTION: string = 'Welcome to my website!'
 export const SITE_NAV_LINKS: NavLink[] = [
   { name: 'Blog', href: '/blog' },
   { name: 'Portfolio', href: '/portfolio' },

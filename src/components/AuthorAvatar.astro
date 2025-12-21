@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
+interface Props {
+  name: string
+  image?: ImageMetadata
+}
+
+const { name, image } = Astro.props
+const placeholder = name.charAt(0).toUpperCase()
+---
+
+<div class="flex items-center gap-3">
+  <div class="avatar">
+    {
+      image ? (
+        <div class="rounded-full text-base">
+          <Image src={image} alt={name} width={48} height={48} />
+        </div>
+      ) : (
+        <div class="avatar placeholder">
+          <div class="bg-primary text-primary-content flex h-12 w-12 items-center justify-center rounded-full text-xl">
+            {placeholder}
+          </div>
+        </div>
+      )
+    }
+  </div>
+  <div class="flex flex-col">
+    <span class="text-base-content font-medium">{name}</span>
+  </div>
+</div>

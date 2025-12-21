@@ -1,0 +1,37 @@
+---
+interface Heading {
+  depth: number
+  text: string
+  slug: string
+}
+const { headings } = Astro.props
+
+function getPaddingClass(depth: number): string {
+  return (
+    {
+      3: 'pl-4',
+      4: 'pl-8',
+    }[depth] || 'pl-0'
+  )
+}
+---
+
+<details
+  open
+  class="bg-base-300 border-base-300 collapse-arrow collapse mb-12 border"
+  name="table-of-contents">
+  <summary class="collapse-title font-semibold">Table of Contents</summary>
+  <div class="collapse-content text-sm">
+    <ul class="space-y-2">
+      {
+        headings.map((heading: Heading) => (
+          <li class={getPaddingClass(heading.depth)}>
+            <a href={`#${heading.slug}`} class="link link-hover text-lg">
+              - {heading.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</details>
