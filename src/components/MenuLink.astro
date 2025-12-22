@@ -1,16 +1,17 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+interface Props {
+  href?: string
+  class?: string
+}
 
-type Props = HTMLAttributes<'a'>
-
-const { href, class: className, ...props } = Astro.props
+const { href = '#', class: className = '' } = Astro.props
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '')
 const subpath = pathname.match(/[^\/]+/g)
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '')
+const isActive = subpath?.join('') == href.replace('/', '').toString()
 ---
 
 <li>
-  <a class:list={[className, { active: isActive }]} href={href} {...props}>
+  <a class:list={[className, { 'menu-active': isActive }]} href={href}>
     <slot />
   </a>
 </li>
