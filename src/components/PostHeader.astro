@@ -24,7 +24,7 @@ const { author, authorImage } = post.data
   </h1>
   <!-- Description -->
   <!-- Author + reading time -->
-  <div class="mb-6 space-y-2">
+  <div class="space-y-4">
     <div class="flex items-center gap-3">
       <AuthorAvatar name={author} image={authorImage} />
       {
@@ -37,27 +37,34 @@ const { author, authorImage } = post.data
       }
     </div>
     <!-- Date  -->
-    <div class="text-base-content/70 text-sm">
+    <div class="text-base-content/70 flex items-center gap-3 text-sm">
+      {post.data.datePublished && <span>Posted {formatDate(post.data.datePublished)}</span>}
       {
-        post.data.dateUpdated
-          ? `Updated ${formatDate(post.data.dateUpdated)}`
-          : `Posted ${formatDate(post.data.datePublished)}`
+        post.data.datePublished && post.data.dateUpdated && (
+          <span class="text-base-content/40">•</span>
+        )
+      }
+      {
+        post.data.dateUpdated && (
+          <span class="italic">Edited {formatDate(post.data.dateUpdated)}</span>
+        )
       }
     </div>
   </div>
-  <!-- Tags -->
-  {
-    post.data.tags.length && (
-      <div class="mb-8 flex flex-wrap gap-2">
-        {post.data.tags.map((tag) => (
-          <a href={`/blog/tags/${tag}`} class="badge-soft badge badge-info">
-            #{tag}
-          </a>
-        ))}
-      </div>
-    )
-  }
 </header>
+<!-- Tags -->
+{
+  post.data.tags.length > 0 && (
+    <div class="mb-8 flex flex-wrap gap-2">
+      {post.data.tags.map((tag) => (
+        <a href={`/blog/tags/${tag}`} class="badge-soft badge badge-info">
+          #{tag}
+        </a>
+      ))}
+    </div>
+  )
+}
+
 <!-- Hero -->
 {
   post.data.heroImage && (

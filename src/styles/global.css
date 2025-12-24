@@ -13,3 +13,7 @@
   --font-mono: 'JetBrains Mono', monospace;
   --font-sans: 'IBM Plex Sans', sans-serif;
 }
+
+.prose blockquote {
+  quotes: none;
+}
