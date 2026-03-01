@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<label class="swap swap-rotate hover:text-accent mx-2">
+  <input id="theme-toggle" type="checkbox" value="light" class="theme-controller" />
+  <Icon name="lucide:sun" class="swap-off fill-current" size="20" />
+  <Icon name="lucide:moon" class="swap-on fill-current" size="20" />
+</label>
+
+<script is:inline>
+  const t = document.getElementById('theme-toggle')
+  t.checked = localStorage.getItem('theme') === 'light'
+  t.addEventListener('change', () => {
+    const theme = t.checked ? 'light' : 'dark'
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('theme', theme)
+  })
+</script>

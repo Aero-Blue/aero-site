@@ -1,5 +1,6 @@
 ---
 import MenuLink from '@/components/MenuLink.astro'
+import ThemeToggle from '@/components/ThemeToggle.astro'
 import { Icon } from 'astro-icon/components'
 import { SITE_NAV_LINKS, SITE_TITLE } from '@/consts'
 ---
@@ -26,12 +27,8 @@ import { SITE_NAV_LINKS, SITE_TITLE } from '@/consts'
     <div class="navbar-end hidden sm:flex">
       <ul class="menu menu-horizontal">
         {SITE_NAV_LINKS.map((link) => <MenuLink href={link.href}>{link.name}</MenuLink>)}
-        <label class="swap swap-rotate hover:text-accent mx-2">
-          <input type="checkbox" class="theme-controller" value="light" />
-          <Icon name="lucide:sun" class="swap-off fill-current" size="20" />
-          <Icon name="lucide:moon" class="swap-on fill-current" size="20" />
-        </label>
       </ul>
+      <ThemeToggle />
     </div>
   </nav>
 </header>

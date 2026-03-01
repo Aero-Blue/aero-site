@@ -13,6 +13,9 @@ const { title, description } = Astro.props
 <html lang="en">
   <head>
     <BaseHead description={description} title={title} />
+    <script is:inline>
+      document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark'
+    </script>
   </head>
   <body class="flex min-h-screen min-w-56 flex-col">
     <NavBar />
