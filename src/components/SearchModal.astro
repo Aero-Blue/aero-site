@@ -1,0 +1,40 @@
+---
+import { Icon } from 'astro-icon/components'
+import Search from 'astro-pagefind/components/Search'
+---
+
+<search-modal>
+  <div class="tooltip tooltip-bottom" data-tip="⌘K">
+    <button class="btn btn-ghost btn-sm" aria-label="Open search">
+      <Icon name="lucide:search" size="20" />
+    </button>
+  </div>
+  <dialog class="modal">
+    <div class="modal-box max-w-2xl">
+      <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} />
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+</search-modal>
+
+<script>
+  class SearchModal extends HTMLElement {
+    connectedCallback() {
+      const btn = this.querySelector('button')
+      const dialog = this.querySelector('dialog')
+
+      btn?.addEventListener('click', () => dialog?.showModal())
+
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key == 'k') {
+          e.preventDefault()
+          dialog?.showModal()
+        }
+      })
+    }
+  }
+
+  customElements.define('search-modal', SearchModal)
+</script>
