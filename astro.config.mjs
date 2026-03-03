@@ -7,14 +7,17 @@ import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import icon from 'astro-icon'
 import { remarkReadingTime } from './src/utils/remark-reading-time'
-import remarkToc from 'remark-toc'
-import remarkDirective from 'remark-directive'
+import rehypeSlug from 'rehype-slug'
+import rehypeExternalLinks from 'rehype-external-links'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import astroExpressiveCode from 'astro-expressive-code'
+import pagefind from 'astro-pagefind'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://aeroblue.dev',
   integrations: [
+    pagefind(),
     astroExpressiveCode({
       themes: ['rose-pine-moon', 'rose-pine-dawn'],
       themeCssSelector: (theme) => {
@@ -26,7 +29,12 @@ export default defineConfig({
     icon(),
   ],
   markdown: {
-    remarkPlugins: [remarkDirective, remarkReadingTime, remarkToc],
+    remarkPlugins: [remarkReadingTime],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeExternalLinks, { target: '_blank', rel: ['nofollow', 'noopener', 'noreferrer'] }],
+      [rehypeAutolinkHeadings, { behavior: 'wrap', properties: { className: ['heading-link'] } }],
+    ],
   },
   vite: {
     plugins: [tailwindcss()],
