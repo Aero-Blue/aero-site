@@ -3,13 +3,20 @@ import MenuLink from '@/components/MenuLink.astro'
 import ThemeToggle from '@/components/ThemeToggle.astro'
 import { Icon } from 'astro-icon/components'
 import { SITE_NAV_LINKS, SITE_TITLE } from '@/consts'
+import SearchModal from '@/components/SearchModal.astro'
 ---
 
 <header>
   <nav class="navbar bg-base-100 border-base-300 border-b text-xl shadow-sm">
     <div class="flex-none">
       <div class="dropdown">
-        <div class="btn btn-ghost sm:hidden" role="button" tabindex="0">
+        <div
+          class="btn btn-ghost md:hidden"
+          role="button"
+          tabindex="0"
+          aria-label="Toggle menu"
+          aria-haspopup="true"
+          aria-expanded="false">
           <Icon name="lucide:menu" size="20" />
         </div>
         <ul
@@ -24,11 +31,12 @@ import { SITE_NAV_LINKS, SITE_TITLE } from '@/consts'
         {SITE_TITLE}
       </a>
     </div>
-    <div class="navbar-end hidden sm:flex">
-      <ul class="menu menu-horizontal">
+    <div class="navbar-end flex">
+      <ul class="menu menu-horizontal hidden md:flex">
         {SITE_NAV_LINKS.map((link) => <MenuLink href={link.href}>{link.name}</MenuLink>)}
       </ul>
       <ThemeToggle />
+      <SearchModal />
     </div>
   </nav>
 </header>

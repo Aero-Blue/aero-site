@@ -1,13 +1,13 @@
 ---
 import PostLayout from '@/layouts/PostLayout.astro'
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro'
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getPublishedPosts } from '@/utils/posts'
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection('blog')
-  return posts.map((post: CollectionEntry<'blog'>) => ({
+  const posts = await getPublishedPosts()
+  return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }))

@@ -4,6 +4,11 @@ interface Heading {
   text: string
   slug: string
 }
+
+interface Props {
+  headings: Heading[]
+}
+
 const { headings } = Astro.props
 
 function getPaddingClass(depth: number): string {

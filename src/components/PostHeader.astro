@@ -2,11 +2,7 @@
 import { type CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 import AuthorAvatar from '@/components/AuthorAvatar.astro'
-
-const formatDate = (date: Date) => {
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' }
-  return date.toLocaleDateString('en-US', options)
-}
+import FormattedDate from '@/components/FormattedDate.astro'
 
 export interface Props {
   post: CollectionEntry<'blog'>
@@ -38,15 +34,15 @@ const { author, authorImage } = post.data
     </div>
     <!-- Date  -->
     <div class="text-base-content/70 flex items-center gap-3 text-sm">
-      {post.data.datePublished && <span>Posted {formatDate(post.data.datePublished)}</span>}
-      {
-        post.data.datePublished && post.data.dateUpdated && (
-          <span class="text-base-content/40">•</span>
-        )
-      }
+      <span>
+        Posted <FormattedDate date={post.data.datePublished} />
+      </span>
+      {post.data.dateUpdated && <span class="text-base-content/40">•</span>}
       {
         post.data.dateUpdated && (
-          <span class="italic">Edited {formatDate(post.data.dateUpdated)}</span>
+          <span class="italic">
+            Edited <FormattedDate date={post.data.dateUpdated} />
+          </span>
         )
       }
     </div>

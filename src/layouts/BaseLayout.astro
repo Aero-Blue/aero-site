@@ -13,15 +13,23 @@ const { title, description } = Astro.props
 <html lang="en">
   <head>
     <BaseHead description={description} title={title} />
-    <script is:inline>
-      document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark'
-    </script>
   </head>
   <body class="flex min-h-screen min-w-56 flex-col">
     <NavBar />
-    <main class="flex grow items-center justify-center">
+    <main class="flex grow flex-col">
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      document.querySelectorAll('.theme-toggle').forEach((t) => {
+        t.checked = localStorage.getItem('theme') === 'light'
+        t.addEventListener('change', () => {
+          const theme = t.checked ? 'light' : 'dark'
+          document.documentElement.dataset.theme = theme
+          localStorage.setItem('theme', theme)
+          document.querySelectorAll('.theme-toggle').forEach((el) => (el.checked = t.checked))
+        })
+      })
+    </script>
   </body>
 </html>

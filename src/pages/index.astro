@@ -1,12 +1,14 @@
 ---
-import { HERO } from '@/consts'
+import { Image } from 'astro:assets'
+import { HERO, SITE_TITLE } from '@/consts'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import heroImage from '@/assets/logo-light-blue.png'
 ---
 
-<BaseLayout title="AeroBlue" description={HERO.description}>
-  <div class="hero bg-base-200 self-stretch">
+<BaseLayout title={SITE_TITLE} description={HERO.description}>
+  <div class="hero bg-base-200 grow">
     <div class="hero-content flex-col md:flex-row">
-      <img src={HERO.image} class="max-w-2xs rounded-lg shadow-2xl md:max-w-xs" />
+      <Image src={heroImage} alt={HERO.title} class="max-w-2xs rounded-lg shadow-2xl md:max-w-xs" />
       <div>
         <h1 class="text-5xl font-bold">{HERO.title}</h1>
         <p class="py-6 md:max-w-sm">{HERO.description}</p>

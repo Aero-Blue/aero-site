@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components'
 const year = new Date().getFullYear()
 ---
 
-<footer class="footer footer-horizontal bg-base-300 text-neutral-content items-center p-4">
+<footer class="footer footer-horizontal bg-base-300 text-base-content items-center p-4">
   <aside class="grid-flow-col items-center">
     <h3>AB</h3>
     <p>Copyright © {year} - All rights reserved</p>
@@ -12,7 +12,7 @@ const year = new Date().getFullYear()
   <nav class="grid-flow-col gap-4 justify-self-end">
     {
       SITE_SOCIAL_LINKS.map((social) => (
-        <a href={social.href}>
+        <a href={social.href} aria-label={social.name}>
           <Icon name={social.icon} size="16" />
         </a>
       ))

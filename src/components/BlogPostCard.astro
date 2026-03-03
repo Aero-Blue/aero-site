@@ -9,7 +9,7 @@ const { post } = Astro.props
 const { heroImage } = post.data
 ---
 
-<article class="h-full w-full">
+<article class="mx-auto h-full w-full max-w-md">
   <a
     href={`/blog/${post.slug}`}
     class="card bg-base-200 group flex h-full flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">

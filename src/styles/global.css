@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
@@ -16,4 +14,32 @@
 
 .prose blockquote {
   quotes: none;
+}
+
+.heading-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.heading-link::before {
+  content: '#';
+  color: oklch(var(--p));
+  opacity: 0;
+  position: absolute;
+  transform: translateX(-100%);
+  padding-right: 0.25rem;
+  transition: opacity 0.15s ease;
+}
+
+.heading-link:hover::before {
+  opacity: 0.5;
+}
+
+.pagefind-ui {
+  --pagefind-ui-primary: oklch(var(--a));
+  --pagefind-ui-text: oklch(var(--bc));
+  --pagefind-ui-background: oklch(var(--b1));
+  --pagefind-ui-border: oklch(var(--b3));
+  --pagefind-ui-tag: oklch(var(--b2));
+  --pagefind-ui-font: var(--font-sans);
 }

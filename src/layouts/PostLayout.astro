@@ -15,7 +15,7 @@ const { title, description } = post.data
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="container mx-auto max-w-3xl px-4 py-12">
+  <article class="container mx-auto max-w-3xl px-4 py-12" data-pagefind-body>
     <div>
       <a
         href="/blog"
@@ -25,7 +25,6 @@ const { title, description } = post.data
     </div>
     <PostHeader post={post} readingTime={readingTime} />
     {headings.length > 0 && post.data.tableOfContents && <TableOfContents headings={headings} />}
-    <h1 class="toc"></h1>
     <PostContent>
       <Content />
     </PostContent>
