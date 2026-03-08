@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const { post, readingTime } = Astro.props
-const { author, authorImage } = post.data
+const { author, authorImage, heroImageCredit } = post.data
 ---
 
 <header class="mb-8">
@@ -70,6 +70,26 @@ const { author, authorImage } = post.data
         alt={post.data.title}
         class="w-full rounded-none md:rounded-lg"
       />
+      {heroImageCredit && (
+        <figcaption class="text-base-content/50 mt-2 px-4 text-center text-xs md:px-0">
+          Photo by{' '}
+          <a
+            href={heroImageCredit.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-base-content/70 underline">
+            {heroImageCredit.name}
+          </a>{' '}
+          on{' '}
+          <a
+            href="https://unsplash.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-base-content/70 underline">
+            Unsplash
+          </a>
+        </figcaption>
+      )}
     </figure>
   )
 }

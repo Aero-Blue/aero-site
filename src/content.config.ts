@@ -11,6 +11,12 @@ const blog = defineCollection({
       dateUpdated: z.coerce.date().optional(),
       readingTime: z.string().optional(),
       heroImage: image().optional(),
+      heroImageCredit: z
+        .object({
+          name: z.string(),
+          url: z.string().url(),
+        })
+        .optional(),
       tags: z.array(z.string()).default([]),
       category: z.string().optional(),
       draft: z.boolean().default(true),
