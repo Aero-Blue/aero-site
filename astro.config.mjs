@@ -13,9 +13,12 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import astroExpressiveCode from 'astro-expressive-code'
 import pagefind from 'astro-pagefind'
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://aeroblue.dev',
+
   integrations: [
     pagefind(),
     astroExpressiveCode({
@@ -28,6 +31,7 @@ export default defineConfig({
     sitemap(),
     icon(),
   ],
+
   markdown: {
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
@@ -36,7 +40,10 @@ export default defineConfig({
       [rehypeAutolinkHeadings, { behavior: 'wrap', properties: { className: ['heading-link'] } }],
     ],
   },
+
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: cloudflare(),
 })
