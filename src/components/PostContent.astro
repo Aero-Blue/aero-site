@@ -5,14 +5,26 @@
 <!-- prettier-ignore -->
 <div
   class="
-  prose prose-lg
+  prose prose-lg max-w-none
   prose-headings:font-bold prose-headings:tracking-tight prose-headings:scroll-mt-24
-  prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3
-  prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold
-  prose-code:text-primary prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:rounded prose-code:text-sm prose-code:before:content-[''] prose-code:after:content-['']
+  prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
+  prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3
+  prose-p:leading-relaxed
+  prose-strong:font-semibold
+  prose-code:before:content-[''] prose-code:after:content-['']
   prose-pre:bg-base-300 prose-pre:border prose-pre:border-base-content/10
-  prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-base-200 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:not-italic
-  prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8
-  prose-hr:border-base-300 prose-ul:my-4 prose-ol:my-4 prose-li:my-1 max-w-none">
+  prose-blockquote:bg-base-200/50 prose-blockquote:border prose-blockquote:border-base-content/10
+  prose-blockquote:border-l-3 prose-blockquote:border-l-primary/50 prose-blockquote:rounded-r-lg
+  prose-blockquote:px-5 prose-blockquote:not-italic prose-blockquote:text-base-content/90 prose-blockquote:font-normal
+  prose-img:rounded-lg prose-img:shadow-lg prose-img:my-6 prose-img:mx-auto
+  prose-hr:border-base-300
+  prose-ul:my-4 prose-ol:my-4 prose-li:my-1
+  prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-base-content/60 prose-figcaption:mt-1 prose-figcaption:italic
+  prose-table:w-full prose-table:border-collapse prose-table:border prose-table:border-base-content/20 prose-table:border-spacing-0 prose-table:overflow-auto prose-table:rounded-lg prose-table:my-6
+  prose-thead:bg-base-300 prose-thead:border-b-4 prose-thead:border-base-content/20
+  prose-th:border prose-th:border-base-content/20 prose-th:px-4 prose-th:py-3 prose-th:font-semibold prose-th:text-base-content prose-th:uppercase prose-th:tracking-wide prose-th:text-xs
+  prose-td:border prose-td:border-base-content/20 prose-td:px-4 prose-td:py-2
+  [&_details]:mt-6 [&_details]:p-3 [&_details]:rounded-lg [&_details]:border [&_details]:border-base-content/10
+  [&_details_summary]:cursor-pointer [&_details_summary]:font-semibold">
   <slot />
 </div>

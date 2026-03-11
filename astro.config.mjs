@@ -12,6 +12,7 @@ import rehypeExternalLinks from 'rehype-external-links'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import astroExpressiveCode from 'astro-expressive-code'
 import pagefind from 'astro-pagefind'
+import remarkCaptions from 'remark-captions'
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,7 +30,7 @@ export default defineConfig({
     icon(),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkCaptions],
     rehypePlugins: [
       rehypeSlug,
       [rehypeExternalLinks, { target: '_blank', rel: ['nofollow', 'noopener', 'noreferrer'] }],
