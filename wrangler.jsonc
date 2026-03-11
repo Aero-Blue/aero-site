@@ -1,0 +1,7 @@
+{
+    "name": "aero-site",
+    "compatibility_date": "2026-03-11",
+    "assets": {
+      "directory": "./dist"
+    }
+  }
